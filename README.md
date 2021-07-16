@@ -7,11 +7,18 @@ then run
 "$scons platform=linux"
 in the directory
 
-1: Using evtest find the path_suffix eg "26" for all devices you want to use.
+To check for connected devices, use .list_devices() which will print out "Found device #" for each device connected
 
-2: Open the device you want to poll
+1: set the interface using the .set_iface(int num) method. This sets the interface for the object so acceleration data, button data, etc can be read
 
-3: Poll the device, because this is so generic, only returning an array of events, this could be expanded to any input device.
+2: open the interface for reading .open_iface()
 
-4: Figure out what the events mean using evtest and xwiishow to work out what each code and associated value means
+3: to set internal values you need to poll the device, use .poll_iface() then to access the data use,
 
+.accel_X(), _Y(), _Z()
+
+.button_A(), _B(), _LEFT(), _RIGHT(), _UP(), _DOWN(), _HOME(), _PLUS(), _MINUS(), _ONE(), _TWO() 
+
+.ir_X(), _Y()
+
+.motionplus_X(), _Y(), _Z()

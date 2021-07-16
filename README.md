@@ -1,6 +1,12 @@
 # godot-wiimote
 A GDNative C++ project to add wiimote functionality to godot on linux
 
+To compile download  [godot-cpp](https://github.com/godotengine/godot-cpp) and place in same directory as the src directory and Sconstruct file
+
+then run 
+"$scons platform=linux"
+in the directory
+
 1: Using evtest find the path_suffix eg "26" for all devices you want to use.
 
 2: Open the device you want to poll

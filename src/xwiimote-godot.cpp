@@ -133,14 +133,6 @@ public:
             return -1;
             
         }
-
-        memset(fds, 0, sizeof(fds));
-        fds[0].fd = 0;
-        fds[0].events = POLLIN;
-        fds[1].fd = xwii_iface_get_fd(iface);
-        fds[1].events = POLLIN;
-        fds_num = 2;
-
         
         ret = xwii_iface_watch(iface, true);
         if (ret){
@@ -156,14 +148,8 @@ public:
     }
 
     void poll_iface(){
-        /*int ret = poll(fds, fds_num, 0.00001);
-		if (ret < 0) {
-			if (errno != EINTR) {
-				ret = -errno;
-				Godot::print("Error: Cannot poll fds");
-			}
-		}
-*/
+        struct xwii_event event;
+
 		int ret = xwii_iface_dispatch(iface, &event, sizeof(event));
 		if (ret) {
 			if (ret != -EAGAIN) {
@@ -174,9 +160,6 @@ public:
 			switch (event.type) {
                 case XWII_EVENT_GONE:
                     Godot::print("Info: Device gone");
-                    fds[1].fd = -1;
-                    fds[1].events = 0;
-                    fds_num = 1;
                     break;
                     
                     
@@ -189,59 +172,80 @@ public:
                     break;
                     
                     
-                case XWII_EVENT_KEY:
-                    
+                case XWII_EVENT_KEY:                    
                     switch(event.v.key.code){
                         case XWII_KEY_A:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.A=true;
-                            }
+                            else
+                                button.A=false;
+                            break;
                         case XWII_KEY_B:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.B=true;
-                            }
+                            else
+                                button.B=false;
+                            break;
                         case XWII_KEY_UP:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.UP=true;
-                            }
+                            else
+                                button.UP=false;
+                            break;
                         case XWII_KEY_DOWN:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.DOWN=true;
-                            }
+                            else
+                                button.DOWN=false;
+                            break;
                         case XWII_KEY_LEFT:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.LEFT=true;
-                            }
+                            else
+                                button.LEFT=false;
+                            break;
                         case XWII_KEY_RIGHT:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.RIGHT=true;
-                            }
+                            else
+                                button.RIGHT=false;
+                            break;
                         case XWII_KEY_HOME:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.HOME=true;
-                            }
+                            else
+                                button.HOME=false;
+                            break;
                         case XWII_KEY_PLUS:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.PLUS=true;
-                            }
+                            else
+                                button.PLUS=false;
+                            break;
                         case XWII_KEY_MINUS:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.MINUS=true;
-                            }
+                            else
+                                button.MINUS=false;
+                            break;
                         case XWII_KEY_ONE:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.ONE=true;
-                            }
+                            else
+                                button.ONE=false;
+                            break;
                         case XWII_KEY_TWO:
-                            if (event.v.key.state){
+                            if (event.v.key.state)
                                 button.TWO=true;
-                            }
+                            else
+                                button.TWO=false;
+                            break;
                         
                     }
                     break;
                     
                 
-                    
+                 
                 case XWII_EVENT_ACCEL:
                     accel.X = event.v.abs[0].x;
                     accel.Y = event.v.abs[0].y;
@@ -354,7 +358,6 @@ public:
     };
 
     struct xwii_iface *iface;
-    struct xwii_event event;
     struct my_button button;
     
     struct my_accel accel;
@@ -364,10 +367,6 @@ public:
     struct my_motionplus motionplus;
 
     String _name;
-
-    int fds_num;
-    struct pollfd fds[2];
-
     
     
     static void _register_methods(){

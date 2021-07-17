@@ -1,5 +1,5 @@
 
-var player1 = load("res://bin/libxwiimote-godot.gdns").new()
+var player1 = load("res://libxwiimote-godot.gdns").new()
 var vel = Vector3(0,0,0)
 
 func _ready():

@@ -7,6 +7,8 @@ then run
 "$scons platform=linux"
 in the directory
 
+In project settings, disable vsync to get the wiimote to work properly
+
 To check for connected devices, use .list_devices() which will print out "Found device #" for each device connected
 
 1: set the interface using the .set_iface(int num) method. This sets the interface for the object so acceleration data, button data, etc can be read

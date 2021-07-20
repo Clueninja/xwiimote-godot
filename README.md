@@ -1,5 +1,8 @@
 # godot-wiimote
-A GDNative C++ project to add wiimote functionality to godot on linux
+A GDNative C++ project to add wiimote functionality to godot on linux using the xwiimote kernal library
+Requirements:
+linux kernel 3.1 or newer (3.11 or newer recommended)
+bluez-4.101 or newer (bluez-5.0 or newer recommended)
 
 To compile download  [godot-cpp](https://github.com/godotengine/godot-cpp) and place in same directory as the src directory and Sconstruct file
 

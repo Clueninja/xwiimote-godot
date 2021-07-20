@@ -1,7 +1,7 @@
-# godot-wiimote
-A GDNative C++ project to add wiimote functionality to godot on linux using the xwiimote kernal library
+# godot-xwiimote
+# A GDNative C++ project to add wiimote functionality to godot on linux using the xwiimote kernal library
 
-Requirements:
+# Requirements:
 linux kernel 3.1 or newer (3.11 or newer recommended)
 bluez-4.101 or newer (bluez-5.0 or newer recommended)
 
@@ -11,7 +11,7 @@ then run
 "$scons platform=linux"
 in the directory
 
-(Important) In project settings, disable vsync to get the wiimote to work properly
+# (Important) In project settings, disable vsync to get the wiimote to work properly
 
 To check for connected devices, use .list_devices() which will print out "Found device #" for each device connected
 

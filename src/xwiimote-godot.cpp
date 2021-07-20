@@ -74,6 +74,7 @@ public:
     
 
     void list_devices(){
+	    //  copied almost word for word from https://github.com/dvdhrm/xwiimote/blob/master/tools/xwiishow.c enumerate()
         struct xwii_monitor *mon;
         char *ent;
         int num = 0;
@@ -94,6 +95,7 @@ public:
     }
 
     int set_iface(int num){
+	    //  copied almost word for word from https://github.com/dvdhrm/xwiimote/blob/master/tools/xwiishow.c lines 2684-2689 including get_dev()
         struct xwii_monitor *mon;
         char *ent;
         int i = 0;
@@ -127,13 +129,15 @@ public:
     }
 
     int open_iface(){
+	//  copied almost word for word from https://github.com/dvdhrm/xwiimote/blob/master/tools/xwiishow.c lines 2713-2717
+
         int ret = xwii_iface_open(iface, xwii_iface_available(iface) | XWII_IFACE_WRITABLE);
         if (ret){
             Godot::print("Error: Cannot open interface");
             return -1;
             
         }
-        
+	//  copied almost word for word from https://github.com/dvdhrm/xwiimote/blob/master/tools/xwiishow.c lines 2506-2508
         ret = xwii_iface_watch(iface, true);
         if (ret){
             Godot::print("Error: Cannot initialize hotplug watch descriptor");
@@ -151,6 +155,7 @@ public:
         struct xwii_event event;
 
 		int ret = xwii_iface_dispatch(iface, &event, sizeof(event));
+	//  copied almost word for word from https://github.com/dvdhrm/xwiimote/blob/master/tools/xwiishow.c lines 2521-2526
 		if (ret) {
 			if (ret != -EAGAIN) {
 				Godot::print("Error: Read failed with err");
@@ -164,7 +169,7 @@ public:
                     
                     
                 case XWII_EVENT_WATCH:
-                    // i dont know how to deal with this
+                    // i dont know how to deal with this, copied from https://github.com/dvdhrm/xwiimote/blob/master/tools/xwiishow.c handle_watch()
                     ret = xwii_iface_open(iface, xwii_iface_available(iface) | XWII_IFACE_WRITABLE);
                     if (ret==-1){
                         Godot::print("Error: Cannot open interface");

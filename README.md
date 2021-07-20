@@ -11,7 +11,7 @@ then run
 "$scons platform=linux"
 in the directory
 
-In project settings, disable vsync to get the wiimote to work properly
+(Important) In project settings, disable vsync to get the wiimote to work properly
 
 To check for connected devices, use .list_devices() which will print out "Found device #" for each device connected
 

@@ -1,5 +1,6 @@
 # godot-wiimote
 A GDNative C++ project to add wiimote functionality to godot on linux using the xwiimote kernal library
+
 Requirements:
 linux kernel 3.1 or newer (3.11 or newer recommended)
 bluez-4.101 or newer (bluez-5.0 or newer recommended)
@@ -27,3 +28,6 @@ To check for connected devices, use .list_devices() which will print out "Found 
 .ir_X(), _Y()
 
 .motionplus_X(), _Y(), _Z()
+
+
+[xwiimote website](https://dvdhrm.github.io/xwiimote)

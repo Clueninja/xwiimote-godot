@@ -7,6 +7,9 @@ bluez-4.101 or newer (bluez-5.0 or newer recommended)
 
 To compile download  [godot-cpp](https://github.com/godotengine/godot-cpp) and place in same directory as the src directory and Sconstruct file
 
+I don't know if your user needs to be in the input group in order to run this without escalating privileges
+if so run $sudo usermod -a -G input username
+
 then run 
 "$scons platform=linux"
 in the directory

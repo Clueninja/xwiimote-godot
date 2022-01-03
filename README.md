@@ -43,34 +43,33 @@ To change the target directory to your program eg example edit the SConstruct fi
 ## Setting up your own project
 In the wiimote controlled object load the godot native library
 
-'''js
+```js
 var player = load("res://bin/libxwiimote-godot.gdns").new()
-'''
+```
 check if there are available devices using list_devices
-'''js
+```js
 player.list_devices()
-'''
+```
 
 then set the xwiimote interface using set_iface, returns 0 if unsuccessful
-'''js
+```js
 player.set_iface(playerid)
-'''
-
+```
 then open the interface using open_iface
 
-'''js
+```js
 player.open_iface()
-'''
+```
 
 then poll the interface using poll_iface
-'''js
+```js
 player.poll_iface()
-'''
+```
 
 this starts a new thread that edits the XWiimoteGodot object indefinetly until
-'''js
+```js
 player.close_iface()
-'''
+```
 is called
 
 

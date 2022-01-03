@@ -12,10 +12,6 @@ bluez-4.101 or newer (bluez-5.0 or newer recommended)
 I'm not sure if your user needs to be in the input group in order to run this without escalating privileges
 if so add your user to the 'input' group
 
-then run 
-"$scons platform=linux"
-in the directory
-
 
 ## Prerequisites
 xwiimote-2 (included in kernel since linux-3.1)
@@ -49,7 +45,7 @@ To check for connected devices, use .list_devices() which will print out "Found 
 
 2: open the interface for reading .open_iface()
 
-3: to set internal values you need to poll the device, use .poll_iface() then to access the data use,
+3: to set internal values you need to poll the device, use .poll_iface() to access the data use,
 
 .accel_X(), _Y(), _Z()
 

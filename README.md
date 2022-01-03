@@ -5,8 +5,23 @@ XWiimote-Godot is a GNU/Linux shared library API for communication between godot
 
 # Requirements:
 linux kernel 3.1 or newer (3.11 or newer recommended)
-
+```bash
+$ uname -r
+```
 bluez-4.101 or newer (bluez-5.0 or newer recommended)
+
+for version >5.0
+```bash
+$ bluetoothctl --version
+```
+
+for version <5.0
+```bash
+$ bluetoothd --version
+```
+
+
+Godot Engine
 
 I'm not sure if your user needs to be in the input group in order to run this without escalating privileges.
 if you experience issues add your user to the 'input' group.

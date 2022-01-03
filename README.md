@@ -23,9 +23,6 @@ $ bluetoothd --version
 
 Godot Engine
 
-I'm not sure if your user needs to be in the input group in order to run this without escalating privileges.
-if you experience issues add your user to the 'input' group.
-
 
 ## Prerequisites
 xwiimote-2 (included in kernel since linux-3.1)
@@ -38,6 +35,10 @@ SCons
 
 Follow [these Instructions](https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html)
 until Creating a simple Plugin
+
+
+I'm not sure if your user needs to be in the input group in order to run this without escalating privileges.
+if you experience issues add your user to the 'input' group.
 
 ## Building xwiimote-godot
 place godot-cpp in same directory as the src directory and run

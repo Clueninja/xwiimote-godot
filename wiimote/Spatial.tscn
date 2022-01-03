@@ -1,0 +1,188 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Bat UV.png" type="Texture" id=2]
+[ext_resource path="res://better bat.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Ball.gd" type="Script" id=4]
+[ext_resource path="res://1.webp" type="Texture" id=6]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 1.0
+
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.247059, 0.898039, 0.0901961, 1 )
+
+[sub_resource type="SphereShape" id=4]
+
+[sub_resource type="CylinderShape" id=5]
+radius = 1.47692
+height = 0.266181
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="PhysicsMaterial" id=7]
+
+[sub_resource type="CubeMesh" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.152941, 0.129412, 0.596078, 1 )
+albedo_texture = ExtResource( 6 )
+metallic_texture = ExtResource( 6 )
+roughness_texture = ExtResource( 6 )
+roughness_texture_channel = 2
+clearcoat_enabled = true
+clearcoat = 1.0
+clearcoat_gloss = 0.5
+anisotropy_enabled = true
+anisotropy = 0.0
+ao_enabled = true
+ao_light_affect = 0.0
+ao_on_uv2 = false
+ao_texture_channel = 0
+depth_enabled = true
+depth_scale = 0.05
+depth_deep_parallax = false
+depth_flip_tangent = false
+depth_flip_binormal = false
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.4
+
+[sub_resource type="BoxShape" id=10]
+
+[sub_resource type="ProceduralSky" id=11]
+radiance_size = 4
+sky_top_color = Color( 0.0352941, 0.443137, 0.666667, 1 )
+sky_horizon_color = Color( 0.666667, 0.768627, 0.847059, 1 )
+sky_curve = 0.192918
+sky_energy = 1.92
+ground_bottom_color = Color( 0.137255, 0.160784, 0.188235, 1 )
+ground_horizon_color = Color( 0.109804, 0.203922, 0.129412, 1 )
+ground_curve = 0.0527804
+sun_color = Color( 0.615686, 0.760784, 0.152941, 1 )
+sun_latitude = 49.21
+sun_curve = 0.0683021
+sun_energy = 2.09
+texture_size = 4
+
+[sub_resource type="Environment" id=12]
+background_mode = 2
+background_sky = SubResource( 11 )
+fog_enabled = true
+
+[node name="Main" type="Spatial"]
+
+[node name="Ball" type="RigidBody" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 2, 0 )
+physics_material_override = SubResource( 1 )
+linear_velocity = Vector3( 0, 0, -10 )
+script = ExtResource( 4 )
+
+[node name="CSGMesh" type="CSGMesh" parent="Ball"]
+mesh = SubResource( 2 )
+material = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ball"]
+shape = SubResource( 4 )
+
+[node name="Paddle1" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -20.5 )
+script = ExtResource( 1 )
+playerid = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="Paddle1"]
+transform = Transform( 0.9, -6.6815e-22, 1.11759e-08, -6.01335e-22, 1, 8.47033e-22, 0, 0, 1.1, 0.293909, 0, 2.16837 )
+shape = SubResource( 5 )
+
+[node name="CSGMesh" type="CSGMesh" parent="Paddle1"]
+transform = Transform( 1, -8.74228e-08, -8.9407e-08, -8.74228e-08, -1, 0, -8.9407e-08, 7.10543e-15, -1, 0.25924, 0, 0.364691 )
+mesh = ExtResource( 3 )
+material = SubResource( 6 )
+
+[node name="Paddle2" type="KinematicBody" parent="."]
+transform = Transform( -1, 7.64274e-15, -8.74228e-08, 0, -1, -8.74228e-08, -8.74228e-08, -8.74228e-08, 1, 0, 1, 20.5 )
+script = ExtResource( 1 )
+playerid = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Paddle2"]
+transform = Transform( 0.9, 0, 0, 2.5411e-21, 1, 0, 0, 0, 1.1, 2.86531e-07, 2.38419e-07, -3.27752 )
+shape = SubResource( 5 )
+
+[node name="CSGMesh" type="CSGMesh" parent="Paddle2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27575e-07, 2.38419e-07, -1.45929 )
+mesh = ExtResource( 3 )
+material = SubResource( 6 )
+
+[node name="Table" type="StaticBody" parent="."]
+transform = Transform( 10, 0, 0, 0, 0.01, 0, 0, 0, 20, 0, 0, 0 )
+physics_material_override = SubResource( 7 )
+
+[node name="CSGMesh" type="CSGMesh" parent="Table"]
+mesh = SubResource( 8 )
+material = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Table"]
+shape = SubResource( 10 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0.000579468, 0.000263872, -0.000264302, 0.000741412, 1, 0.000579272, -1, 0.000741565, 0, 30.3286, 0 )
+visible = false
+
+[node name="Viewports" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.983
+margin_left = -3.0
+margin_top = -4.0
+margin_bottom = 7.19995
+focus_neighbour_left = NodePath("ViewportContainer1")
+focus_neighbour_right = NodePath("ViewportContainer2")
+custom_constants/separation = 5
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer1" type="ViewportContainer" parent="Viewports"]
+margin_right = 511.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+stretch = true
+
+[node name="Viewport1" type="Viewport" parent="Viewports/ViewportContainer1"]
+size = Vector2( 511, 600 )
+handle_input_locally = false
+msaa = 2
+fxaa = true
+debanding = true
+render_direct_to_screen = true
+render_target_update_mode = 3
+audio_listener_enable_3d = true
+
+[node name="Camera1" type="Camera" parent="Viewports/ViewportContainer1/Viewport1"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 6, -35 )
+current = true
+
+[node name="ViewportContainer2" type="ViewportContainer" parent="Viewports"]
+margin_left = 516.0
+margin_right = 1027.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+stretch = true
+
+[node name="Viewport2" type="Viewport" parent="Viewports/ViewportContainer2"]
+size = Vector2( 511, 600 )
+handle_input_locally = false
+msaa = 2
+fxaa = true
+debanding = true
+render_direct_to_screen = true
+render_target_update_mode = 3
+
+[node name="Camera2" type="Camera" parent="Viewports/ViewportContainer2/Viewport2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 35 )
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 12 )

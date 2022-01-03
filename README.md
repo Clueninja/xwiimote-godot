@@ -22,7 +22,6 @@ SCons
 ### Setting up GDNative C++
 
 Follow [these Instructions](https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html)
-
 until Creating a simple Plugin
 
 ## Building xwiimote-godot
@@ -129,9 +128,5 @@ is called
 .nunchuk_analog_X(), _Y()
 
 ```
-
-
-
-
 
 [xwiimote website](https://dvdhrm.github.io/xwiimote)

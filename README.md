@@ -25,8 +25,7 @@ Follow [these Instructions](https://docs.godotengine.org/en/stable/tutorials/plu
 until Creating a simple Plugin
 
 ## Building xwiimote-godot
-place godot-cpp in same directory as the src directory and Sconstruct file
-run 
+place godot-cpp in same directory as the src directory and run
 ```bash
 $ scons platform=linux target=release
 ```

@@ -548,7 +548,7 @@ public:
         register_method ("set_iface",  &XWiimoteGodot::set_iface);
         // opens interface to wiimote
         register_method ("open_iface", &XWiimoteGodot::open_iface);
-        // sets event to the data stored in the driver ? idk
+        // creates a new detached thread then indefinately edits stored values
         register_method ("poll_iface", &XWiimoteGodot::poll_iface);
         // closes interface, should prob use this
         register_method ("close_iface", &XWiimoteGodot::close_iface);

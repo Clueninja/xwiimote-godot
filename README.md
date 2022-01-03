@@ -1,16 +1,15 @@
-#XWiimote-Godot
+# XWiimote-Godot
 
 XWiimote-Godot is a GNU/Linux shared library API for communication between godot GDscript to the xwiimote kernel API
 
 
 # Requirements:
 linux kernel 3.1 or newer (3.11 or newer recommended)
+
 bluez-4.101 or newer (bluez-5.0 or newer recommended)
 
-
-
-I'm not sure if your user needs to be in the input group in order to run this without escalating privileges
-if so add your user to the 'input' group
+I'm not sure if your user needs to be in the input group in order to run this without escalating privileges.
+if you experience issues add your user to the 'input' group.
 
 
 ## Prerequisites
@@ -20,10 +19,9 @@ SCons
 
 [godot-cpp](https://github.com/godotengine/godot-cpp)
 
-## Setting up GDNative C++
+### Setting up GDNative C++
 
-follow
-	https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html
+Follow [these Instructions](https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html)
 
 until Creating a simple Plugin
 
@@ -77,12 +75,19 @@ is called
 
 
 ## All XWiimoteGodot interfaces
+```js
+
+// miscellaneous methods
+// sets interface pointer
 .set_iface( playerid )
 
+// opens interface to wiimote
 .open_iface()
 
+// creates a new detached thread then indefinately edits stored values
 .poll_iface()
 
+// closes interface
 .close_iface()
 
 .list_devices()
@@ -97,24 +102,33 @@ is called
 
 .reset_all()
 
-
+// wiimote methods for gdscript
+// wiimote accelerometer gdscript methods
 .wiimote_accel_X(), _Y(), _Z()
 
+// wiimote button gdcript methods
 .wiimote_button_A(), _B(), _LEFT(), _RIGHT(), _UP(), _DOWN(), _HOME(), _PLUS(), _MINUS(), _ONE(), _TWO() 
 
+// wiimote infrared gdscript methods
 .wiimote_ir_X(), _Y()
 
+// wiimote motionplus gdscript methods
 .wiimote_motionplus_X(), _Y(), _Z()
 
+// wiimote absolute rotation methods
 .wiimote_rotation_X(), _Y(), _Z()
 
+// nunchuk methods for gdscript
+// nunchuk accelerometer gdcript methods
 .nunchuk_accel_X(), _Y(), _Z()
 
+// nunchuk button gdcript methods
 .nunchuk_button_C(), _Z()
 
+// nunchuk analog stick gdcript methods
 .nunchuk_analog_X(), _Y()
 
-
+```
 
 
 

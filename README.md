@@ -30,9 +30,9 @@ until Creating a simple Plugin
 ## Building xwiimote-godot
 place godot-cpp in same directory as the src directory and Sconstruct file
 run 
-'''bash
+```bash
 $ scons platform=linux target=release
-'''
+```
 
  in the module folder.
  

@@ -1,0 +1,21 @@
+#XWiimote-Godot
+
+XWiimote-Godot is a GNU/Linux shared library API for communication between godot GDscript to the xwiimote module API. This can be used to move player objects in Godot games.
+
+## Prerequisites
+xwiimote-2 (included in kernel since linux-3.1)
+
+SCons
+
+godot-cpp https://github.com/godotengine/godot-cpp
+
+## Setting up GDNative C++
+
+follow
+	https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html
+
+until Creating a simple Plugin
+
+## Building xwiimote-godot
+run '$ scons platform=linux target=release' in the module folder
+this will create 'libxwiimote-godot.so' in the '/wiimote/bin/x11' directory 
